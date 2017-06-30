@@ -1,0 +1,104 @@
+{% extends "base2.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+    <style>
+        body{
+        	height: 100%;
+	font-family: 'Quicksand';
+}
+
+#login_page{
+	margin: 0 auto;
+	display:block;
+	float: none;
+	height: 100%;
+	text-align: center;
+
+	
+}
+
+
+
+#login_area{
+	
+	background-color: #FFAAAA;
+	border-radius: 5px;
+	padding: 20px;
+	float: none;
+	margin: 0 auto;
+	
+	
+}
+
+#system_title{
+	font-family: 'Quicksand';
+	font-weight: 400;
+	font-size: 35px;
+	color: #FF6767;
+}
+
+#login_text{
+	font-family: 'Broadway';
+	font-size: 20px;
+}
+
+#buttons{
+	height: 25px;
+}
+.form_element{
+	text-align: left;
+	margin-top: 12px;
+	margin-bottom: 5px;
+
+}
+
+
+    </style>
+    
+    
+    	<div class='container' ng-controller='LoginCtrl'>
+		<div class='col-md-8 center-block' id="login_page">
+			 <img src={{ url_for('static', filename='img/WIST.png')}} class="center-block" style="width: 250px;">
+
+			<div id='system_title'>
+				Sign Up
+			</div>
+			
+			<form action="{{ url_for('register') }}" method="post">
+
+			<div id="login_area" class='col-md-4'>
+				<div class='form_element'>
+					<label>Name</label><br/>
+					{{ form.name(class_='form-control') }}
+					
+				</div>
+				<div class='form_element'>
+					<label>Email</label><br/>
+					{{ form.email(class_='form-control') }}
+					
+				</div>
+				<div class='form_element'>
+					Password<br/>
+					{{ form.password(class_='form-control') }}
+				</div>
+				<div>
+					<a id='forget_pass'>Forgot Password</a>
+				</div>
+				<br/>  
+				<div id='buttons'>
+					<a href="{{url_for('login')}}"><div class='btn btn-success' style="float:right">Login</div></a>
+				
+					<button class='btn btn-success' style="float:left" type="submit">Sign Up</button>
+				</div>
+				
+			</div>
+		</form>	
+		</div>
+		
+		</div>
+{% endblock %}

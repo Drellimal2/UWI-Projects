@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+<div class="container" style="
+        background: #ececec;
+        width: 60%;
+        padding:25px;
+        height:100%;
+        max-width:600px;
+        min-width:350px;
+        margin: 20px auto;
+        ">
+  <h2 id="contact_form_title" style="color:#688D00;font-family:'sans';">CONTACT FORM</h2>
+  <p>Fill in this form to contact the site's owners.</p>
+  
+  <form action="{{ url_for('contact') }}" method="post">
+          <div class-"form-group">
+            <label>Name</label>
+            <br />
+            {{ form.name(class_="form-control") }}
+          </div>
+          <br />
+          <div class-"form-group">
+            <label>Email</label>
+                          <br />
+              {% if 'email' in form.errors %}
+                Enter a valid email.
+                {% endif %}
+              {{ form.email(class_="form-control") }}
+            </div>
+            <br />
+            <div class-"form-group">
+              
+              <label>Subject</label>
+              <br />
+              {% if 'subject' in form.errors %}
+                Subject is required.
+                {% endif %}
+              {{ form.subject(class_="form-control") }}
+            </div>
+            <br />
+            <div class-"form-group">
+              <label>Message</label>
+              <br />
+              {% if 'msg' in form.errors %}
+                Message is required.
+                {% endif %}
+              {{ form.msg(class_="form-control") }}
+            </div>
+            <hr style="color:#8c8c8c;" >
+            <br />
+            
+    <button class="btn btn-default" type="submit">Send</button>
+    {{ form.csrf_token }}       
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+<style>
+    #container{
+        width: 80%;
+        margin: 0 auto;
+        padding : 10px;
+    }
+    
+    .display_pic{
+        height: 90px;
+    }
+    
+    .profile_btn{
+        background: #FFFFFF;
+        border: none;
+        width: 100%;
+        margin: 5px;
+        color: #6fd3f4;
+        text-shadow: 0px 0px 0px 0px;
+        min-height: 80px;
+
+    }
+    
+    .name{
+        font-size: 35px;
+    }
+    
+    .pic{
+        height: 95%;
+        float: left;
+        margin-left: 20%;
+        
+    }
+    
+</style>
+<div id="container">
+    <h2 style="text-align:center;">Profiles</h2>
+    {% for profile in profiles %}
+    <a href="/profile/{{ profile.id}}">
+    <div class="btn btn-default profile_btn">
+        <div class="pic">
+            <img class='display_pic' src={{ url_for('static', filename=profile.image ) }}>
+        </div>
+        <div class="name">
+            {{ profile.firstname }} {{ profile.lastname }}
+        </div>
+    </div>
+    </a>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

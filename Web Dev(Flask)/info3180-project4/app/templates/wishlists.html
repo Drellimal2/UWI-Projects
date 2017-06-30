@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+<script type="text/javascript">
+        var user = {{ user }};
+    	localStorage.setItem('user', user);
+</script>
+<div class="container"
+ng-controller="WishlistsCtrl" style="
+        width: 60%;
+        padding:25px;
+        height:100%;
+        max-width:600px;
+        min-width:350px;
+        margin: 20px auto;
+        ">
+    <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title">New Wishlist</h3>
+        </div>
+        <div class="modal-body">
+           <form>
+                <div>
+                    <label>Title</label>
+                    {{ form.title(class_='form-control',**{'ng-model':'title'}) }}
+                </div>
+                <div>
+                    <label>Description</label>
+                    {{ form.desc(class_='form-control',**{'ng-model':'desc'}) }}
+                </div>
+                <div>
+                    <label>Private</label>
+                    {{ form.is_private(**{'ng-model':'private'}) }}
+                </div>
+           </form>
+           
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+    <div id="header_wishlists" >
+        <h2 style="float:left;"> My Wishlists </h2>
+            <button class="btn btn-default" style="float:right" ng-click="open()">+ New Wishlist</button>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div id="my_wishlists">
+        
+        
+        <div ng-repeat="wishlist in wishlists"
+            style="
+            height: 50px;
+            border: 2px solid #FFAAAA;
+            margin: 2px;
+            border-radius : 5px;"
+            >
+            <a class='btn' href="{$'/wishlist/' + wishlist.w_id $}" style="width:100%;">
+            
+                <h3>
+            {$ wishlist.wtitle $}
+            </h3>
+            </a> 
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

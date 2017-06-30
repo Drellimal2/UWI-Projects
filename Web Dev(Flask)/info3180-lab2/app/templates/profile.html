@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+    <style>
+        .container{
+            border: solid 2px;
+            background-color: #aaaadf;
+            padding:10px;
+        }
+        
+        #main{
+            margin: 50px auto;
+            width: 75%;
+        }
+        
+        #display_pic{
+            width: 40%;
+            margin: 5px 5%;
+            float: left;
+        }
+        
+        #details{
+            float:right;
+            width: 50%;
+            padding: 0;
+            margin: 5% 0;
+            height:100%;
+        }
+        
+        #name{
+            margin: 0;
+        }
+    </style>
+    
+    <div class='container' id='main'>
+        <img id='display_pic' src= {{ url_for('static', filename='img/octocat.png') }}>
+        <div class='container' id='details'>
+            <div class='container' id='name'>
+                Dane Miller
+            </div>
+            <br>
+            <div class='container'>
+                Today is: {{ time }}    
+            </div>
+            <div class='container'>
+                Username: DaneM
+                <br>
+                ID: 007
+                <br>
+                Sex: Male
+                <br>
+                Age: 21
+                <br>
+                Highest Score: ∞
+            </div>
+
+        </div>
+        
+    </div>
+{% endblock %}

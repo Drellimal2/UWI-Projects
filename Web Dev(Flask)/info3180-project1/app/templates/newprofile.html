@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+{% block main %}
+<div class="container" style="
+        background: #ececec;
+        width: 60%;
+        padding:25px;
+        height:100%;
+        max-width:600px;
+        min-width:350px;
+        margin: 20px auto;
+        ">
+  <h2 id="contact_form_title" style="color:#688D00;font-family:'sans';">NEW PROFILE</h2>
+
+  <form action="{{ url_for('profile') }}" method="post" enctype="multipart/form-data">
+          <div class-"form-group">
+            <label>Upload Image</label>
+            {{ form.image }}
+            <br />
+          </div>
+          <br />
+          <div class-"form-group">
+            <label>First Name</label>
+            <br />
+              {% if 'firstname' in form.errors %}
+                This field is required.
+                {% endif %}
+              {{ form.firstname(class_="form-control") }}
+            </div>
+            <br />
+            <div class-"form-group">
+              
+              <label>Last Name</label>
+            <br />
+              {% if 'lastname' in form.errors %}
+                This field is required.
+                {% endif %}
+              {{ form.lastname(class_="form-control") }}
+            </div>
+            <br />
+            <div class-"form-group">
+              <label>Age</label>
+            <br />
+              {% if 'age' in form.errors %}
+                This field is required.
+                {% endif %}
+              {{ form.age(class_="form-control") }}
+              </div>
+            <br />
+            <label>Sex</label>
+            <br />
+              {% if 'sex' in form.errors %}
+                This field is required.
+                {% endif %}
+              {{ form.sex(class_="form-control") }}
+            
+    <button class="btn btn-default" type="submit">Send</button>
+    {{ form.csrf_token }}       
+  </form>
+</div>
+{% endblock %}
